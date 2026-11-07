@@ -13,19 +13,41 @@
             margin: 0;
             padding: 15px;
         }
-        h2 { color: #38bdf8; }
+        h2 { color: #38bdf8; margin-bottom: 5px; }
+        .wallet-box {
+            background: #1e293b;
+            border: 2px solid #38bdf8;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+        .balance {
+            font-size: 24px;
+            font-weight: bold;
+            color: #22c55e;
+        }
+        .withdraw-btn {
+            background-color: #22c55e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
         .search-box {
-            margin: 20px 0;
+            margin: 15px 0;
         }
         input[type="text"] {
-            width: 70%;
+            width: 65%;
             padding: 10px;
             border-radius: 5px;
             border: none;
-            font-size: 16px;
+            font-size: 15px;
         }
-        button {
-            padding: 10px 15px;
+        .search-btn {
+            padding: 10px 12px;
             background-color: #ff0000;
             color: white;
             border: none;
@@ -36,25 +58,25 @@
         .social-buttons {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 8px;
+            margin: 15px 0;
             flex-wrap: wrap;
         }
         .btn {
-            padding: 12px 20px;
+            padding: 10px 15px;
             border-radius: 8px;
             text-decoration: none;
             color: white;
             font-weight: bold;
-            display: inline-block;
+            font-size: 14px;
         }
         .yt { background-color: #ff0000; }
         .tt { background-color: #000000; border: 1px solid #25f4ee; }
         .fb { background-color: #1877f2; }
         .video-container {
-            margin-top: 20px;
+            margin-top: 15px;
             background: #1e293b;
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
         }
     </style>
@@ -62,24 +84,31 @@
 <body>
 
     <h2>Watch & Earn Cash</h2>
-    <p>ویڈیوز دیکھیں اور پوائنٹس حاصل کریں!</p>
+    <p>ویڈیوز دیکھیں اور پوائنٹس کمائیں!</p>
+
+    <!-- Wallet & Withdrawal Section -->
+    <div class="wallet-box">
+        <p>آپ کا موجودہ بیلنس</p>
+        <div class="balance" id="userBalance">$0.50</div>
+        <button class="withdraw-btn" onclick="requestWithdraw()">EasyPaisa / JazzCash ودھڈرا کریں</button>
+    </div>
 
     <!-- YouTube Search Bar -->
     <div class="search-box">
         <input type="text" id="searchInput" placeholder="YouTube پر ویڈیو سرچ کریں...">
-        <button onclick="searchYouTube()">Search</button>
+        <button class="search-btn" onclick="searchYouTube()">Search</button>
     </div>
 
     <!-- Direct Social Media Buttons -->
     <div class="social-buttons">
         <a href="https://www.youtube.com" target="_blank" class="btn yt">YouTube</a>
-        <a href="https://www.tiktok.com" target="_blank" class="btn tt">TikTok</a>
+        <a href="https://www.tiktok.com" target="_blank" class="btn fd-link btn tt">TikTok</a>
         <a href="https://www.facebook.com" target="_blank" class="btn fb">Facebook</a>
     </div>
 
     <!-- Player Container -->
-    <div class="video-container" id="videoArea">
-        <iframe id="ytPlayer" width="100%" height="220" src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+    <div class="video-container">
+        <iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <script>
@@ -87,6 +116,13 @@
             let query = document.getElementById('searchInput').value;
             if(query) {
                 window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(query), '_blank');
+            }
+        }
+
+        function requestWithdraw() {
+            let accountNo = prompt("اپنا EasyPaisa یا JazzCash اکاؤنٹ نمبر درج کریں:");
+            if(accountNo) {
+                alert("ودھڈرا کی درخواست کامیابی سے جمع ہو گئی ہے! آپ کو جلد رقم مل جائے گی۔");
             }
         }
     </script>
