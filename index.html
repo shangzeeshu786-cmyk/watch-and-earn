@@ -22,7 +22,7 @@
             margin: 15px 0;
         }
         .balance {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             color: #22c55e;
         }
@@ -89,7 +89,7 @@
     <!-- Wallet & Withdrawal Section -->
     <div class="wallet-box">
         <p>آپ کا موجودہ بیلنس</p>
-        <div class="balance" id="userBalance">$0.50</div>
+        <div class="balance" id="userBalance">$5.00</div>
         <button class="withdraw-btn" onclick="requestWithdraw()">EasyPaisa / JazzCash ودھڈرا کریں</button>
     </div>
 
@@ -101,20 +101,29 @@
 
     <!-- Direct Social Media Buttons -->
     <div class="social-buttons">
-        <a href="https://www.youtube.com" target="_blank" class="btn yt">YouTube</a>
-        <a href="https://www.tiktok.com" target="_blank" class="btn fd-link btn tt">TikTok</a>
-        <a href="https://www.facebook.com" target="_blank" class="btn fb">Facebook</a>
+        <a href="https://www.youtube.com" target="_blank" onclick="addReward()" class="btn yt">YouTube</a>
+        <a href="https://www.tiktok.com" target="_blank" onclick="addReward()" class="btn tt">TikTok</a>
+        <a href="https://www.facebook.com" target="_blank" onclick="addReward()" class="btn fb">Facebook</a>
     </div>
 
     <!-- Player Container -->
-    <div class="video-container">
+    <div class="video-container" onclick="addReward()">
         <iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+        <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;">فلم یا ویڈیو دیکھنے پر 2.00$ ملیں گے!</p>
     </div>
 
     <script>
+        let currentBalance = 5.00; // شروع کا بیلنس $5
+
+        function addReward() {
+            currentBalance += 2.00; // ہر کلک پر $2.00 تیزی سے بڑھیں گے
+            document.getElementById('userBalance').innerText = '$' + currentBalance.toFixed(2);
+        }
+
         function searchYouTube() {
             let query = document.getElementById('searchInput').value;
             if(query) {
+                addReward();
                 window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(query), '_blank');
             }
         }
@@ -122,7 +131,7 @@
         function requestWithdraw() {
             let accountNo = prompt("اپنا EasyPaisa یا JazzCash اکاؤنٹ نمبر درج کریں:");
             if(accountNo) {
-                alert("ودھڈرا کی درخواست کامیابی سے جمع ہو گئی ہے! آپ کو جلد رقم مل جائے گی۔");
+                alert("ودھڈرا کی درخواست کامیابی سے جمع ہو گئی ہے! آپ کی رقم منتقل کر دی جائے گی۔");
             }
         }
     </script>
