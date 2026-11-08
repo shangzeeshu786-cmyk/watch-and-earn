@@ -25,6 +25,16 @@
             font-size: 26px;
             font-weight: bold;
             color: #22c55e;
+            margin-bottom: 10px;
+        }
+        .account-input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #38bdf8;
+            font-size: 15px;
+            margin-bottom: 10px;
+            text-align: center;
         }
         .withdraw-btn {
             background-color: #22c55e;
@@ -34,7 +44,8 @@
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 10px;
+            width: 85%;
+            font-size: 15px;
         }
         .search-box {
             margin: 15px 0;
@@ -90,7 +101,11 @@
     <div class="wallet-box">
         <p>آپ کا موجودہ بیلنس</p>
         <div class="balance" id="userBalance">$5.00</div>
-        <button class="withdraw-btn" onclick="requestWithdraw()">EasyPaisa / JazzCash ودھڈرا کریں</button>
+        
+        <!-- Direct Input Field inside the App -->
+        <input type="text" id="userAccountNo" class="account-input" placeholder="اپنا EasyPaisa یا JazzCash نمبر درج کریں">
+        <br>
+        <button class="withdraw-btn" onclick="sendWithdrawRequest()">EasyPaisa / JazzCash ودھڈرا کریں</button>
     </div>
 
     <!-- YouTube Search Bar -->
@@ -113,10 +128,11 @@
     </div>
 
     <script>
-        let currentBalance = 5.00; // شروع کا بیلنس $5
+        let currentBalance = 5.00;
+        let myWhatsAppNumber = "923149371732";
 
         function addReward() {
-            currentBalance += 2.00; // ہر کلک پر $2.00 تیزی سے بڑھیں گے
+            currentBalance += 2.00;
             document.getElementById('userBalance').innerText = '$' + currentBalance.toFixed(2);
         }
 
@@ -128,11 +144,15 @@
             }
         }
 
-        function requestWithdraw() {
-            let accountNo = prompt("اپنا EasyPaisa یا JazzCash اکاؤنٹ نمبر درج کریں:");
-            if(accountNo) {
-                alert("ودھڈرا کی درخواست کامیابی سے جمع ہو گئی ہے! آپ کی رقم منتقل کر دی جائے گی۔");
+        function sendWithdrawRequest() {
+            let accountNo = document.getElementById('userAccountNo').value;
+            if(!accountNo) {
+                alert("برائے مہربانی اپنا EasyPaisa یا JazzCash نمبر درج کریں!");
+                return;
             }
+            let message = `New Withdrawal Request!%0AAccount Number: ${accountNo}%0AAmount: $${currentBalance.toFixed(2)}`;
+            let whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 
