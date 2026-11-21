@@ -71,42 +71,7 @@
         <option value="JazzCash">JazzCash</option>
         <option value="Payoneer / Bank">Payoneer / Bank Transfer</option>
       </select>
-  function startTask(platform, url) {
-  window.open(url, '_blank');
-  clearInterval(timerInterval);
-  rewardReady = false;
-  const btn = document.getElementById('claimBtn'), status = document.getElementById('timerStatus');
-  btn.disabled = true;
-  let left = WATCH_SECONDS;
-  status.textContent = `${platform} opened! Wait ${left} seconds for reward...`;
-  timerInterval = setInterval(() => {
-    left--;
-    if (left > 0) { status.textContent = `Please watch the video... Time left: ${left}s`; }
-    else { clearInterval(timerInterval); rewardReady = true; status.textContent = 'Timer complete! Click the button below to claim coins.'; btn.disabled = false; }
-  }, 1000);
-}
-function claimReward() {
-  if (!rewardReady) return;
-  const d = getAppData(); d.coins += REWARD_PER_VIDEO; d.totalWatched += 1; saveAppData(d);
-  rewardReady = false; document.getElementById('claimBtn').disabled = true;
-  document.getElementById('timerStatus').textContent = `Congrats! +${REWARD_PER_VIDEO} Coins added to your balance.`;
-  updateUI();
-}
-function submitWithdraw() {
-  const d = getAppData(), method = document.getElementById('method').value, name = document.getElementById('accountName').value.trim(), account = document.getElementById('accountNumber').value.trim(), msg = document.getElementById('withdrawMsg');
-  if (d.coins < MIN_WITHDRAW_COINS) { msg.className = 'message-box msg-error'; msg.textContent = `Minimum ${MIN_WITHDRAW_COINS.toLocaleString()} Coins ($5.00) required to withdraw.`; return; }
-  if (!name || !account) { msg.className = 'message-box msg-error'; msg.textContent = 'Please enter account holder name and account number.'; return; }
-  const wCoins = d.coins, wUsd = (wCoins / COINS_PER_DOLLAR).toFixed(2);
-  d.coins = 0; d.history.push({ method, name, account, coins: wCoins, usd: wUsd, status: 'Pending' }); saveAppData(d);
-  document.getElementById('accountName').value = ''; document.getElementById('accountNumber').value = '';
-  msg.className = 'message-box msg-success'; msg.textContent = `Your request for $${wUsd} (${wCoins.toLocaleString()} Coins) has been submitted!`;
-  updateUI();
-}
-updateUI();
-</script>
-</body>
-</html>
-  </div>
+    </div>
     <div class="form-group">
       <label for="accountName">Account holder name</label>
       <input type="text" id="accountName" placeholder="Write your full name" />
@@ -120,16 +85,114 @@ updateUI();
     <div id="withdrawHistory" class="history-list"></div>
   </div>
 </div>
+
 <script>
-const REWARD_PER_VIDEO = 25, COINS_PER_DOLLAR = 10000, MIN_WITHDRAW_COINS = 50000, WATCH_SECONDS = 30;
-let timerInterval = null, rewardReady = false;
-function getAppData() { return JSON.parse(localStorage.getItem('watchEarnUnlimitedData')) || { coins: 100, totalWatched: 0, history: [] }; }
-function saveAppData(d) { localStorage.setItem('watchEarnUnlimitedData', JSON.stringify(d)); }
-function updateUI() {
-  const d = getAppData();
-  document.getElementById('coinsCount').textContent = d.coins.toLocaleString();
-  document.getElementById('usdAmount').textContent = (d.coins / COINS_PER_DOLLAR).toFixed(2);
-  document.getElementById('totalWatched').textContent = d.totalWatched;
-  const h = document.getElementById('withdrawHistory');
-  if (d.history.length > 0) { const last = d.history[d.history.length - 1]; h.innerHTML = `Last request: <strong>${last.coins.toLocaleString()} Coins ($${last.usd})</strong> via ${last.method} (${last.status})`; }
-}
+  const REWARD_PER_VIDEO = 25;
+  const COINS_PER_DOLLAR = 10000;
+  const MIN_WITHDRAW_COINS = 50000;
+  const WATCH_SECONDS = 30;
+
+  let timerInterval = null;
+  let rewardReady = false;
+
+  function getAppData() {
+    return JSON.parse(localStorage.getItem('watchEarnUnlimitedData')) || {
+      coins: 100,
+      totalWatched: 0,
+      history: []
+    };
+  }
+
+  function saveAppData(d) {
+    localStorage.setItem('watchEarnUnlimitedData', JSON.stringify(d));
+  }
+
+  function updateUI() {
+    const d = getAppData();
+    document.getElementById('coinsCount').textContent = d.coins.toLocaleString();
+    document.getElementById('usdAmount').textContent = (d.coins / COINS_PER_DOLLAR).toFixed(2);
+    document.getElementById('totalWatched').textContent = d.totalWatched;
+
+    const h = document.getElementById('withdrawHistory');
+    if (d.history.length > 0) {
+      const last = d.history[d.history.length - 1];
+      h.innerHTML = `Last request: <strong>${last.coins.toLocaleString()} Coins ($${last.usd})</strong> via ${last.method} (${last.status})`;
+    }
+  }
+
+  function startTask(platform, url) {
+    window.open(url, '_blank');
+    clearInterval(timerInterval);
+    rewardReady = false;
+
+    const btn = document.getElementById('claimBtn');
+    const status = document.getElementById('timerStatus');
+    btn.disabled = true;
+
+    let left = WATCH_SECONDS;
+    status.textContent = `${platform} opened! Wait ${left} seconds for reward...`;
+
+    timerInterval = setInterval(() => {
+      left--;
+      if (left > 0) {
+        status.textContent = `Please watch the video... Time left: ${left}s`;
+      } else {
+        clearInterval(timerInterval);
+        rewardReady = true;
+        status.textContent = 'Timer complete! Click the button below to claim coins.';
+        btn.disabled = false;
+      }
+    }, 1000);
+  }
+
+  function claimReward() {
+    if (!rewardReady) return;
+    const d = getAppData();
+    d.coins += REWARD_PER_VIDEO;
+    d.totalWatched += 1;
+    saveAppData(d);
+
+    rewardReady = false;
+    document.getElementById('claimBtn').disabled = true;
+    document.getElementById('timerStatus').textContent = `Congrats! +${REWARD_PER_VIDEO} Coins added to your balance.`;
+    updateUI();
+  }
+
+  function submitWithdraw() {
+    const d = getAppData();
+    const method = document.getElementById('method').value;
+    const name = document.getElementById('accountName').value.trim();
+    const account = document.getElementById('accountNumber').value.trim();
+    const msg = document.getElementById('withdrawMsg');
+
+    if (d.coins < MIN_WITHDRAW_COINS) {
+      msg.className = 'message-box msg-error';
+      msg.textContent = `Minimum ${MIN_WITHDRAW_COINS.toLocaleString()} Coins ($5.00) required to withdraw.`;
+      return;
+    }
+
+    if (!name || !account) {
+      msg.className = 'message-box msg-error';
+      msg.textContent = 'Please enter account holder name and account number.';
+      return;
+    }
+
+    const wCoins = d.coins;
+    const wUsd = (wCoins / COINS_PER_DOLLAR).toFixed(2);
+
+    d.coins = 0;
+    d.history.push({ method, name, account, coins: wCoins, usd: wUsd, status: 'Pending' });
+    saveAppData(d);
+
+    document.getElementById('accountName').value = '';
+    document.getElementById('accountNumber').value = '';
+
+    msg.className = 'message-box msg-success';
+    msg.textContent = `Your request for $${wUsd} (${wCoins.toLocaleString()} Coins) has been submitted!`;
+    updateUI();
+  }
+
+  updateUI();
+</script>
+</body>
+</html>
