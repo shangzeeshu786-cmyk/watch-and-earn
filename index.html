@@ -1,160 +1,367 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch & Earn Cash</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0f172a;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 15px;
-        }
-        h2 { color: #38bdf8; margin-bottom: 5px; }
-        .wallet-box {
-            background: #1e293b;
-            border: 2px solid #38bdf8;
-            padding: 15px;
-            border-radius: 12px;
-            margin: 15px 0;
-        }
-        .balance {
-            font-size: 26px;
-            font-weight: bold;
-            color: #22c55e;
-            margin-bottom: 10px;
-        }
-        .account-input {
-            width: 80%;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #38bdf8;
-            font-size: 15px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .withdraw-btn {
-            background-color: #22c55e;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 85%;
-            font-size: 15px;
-        }
-        .search-box {
-            margin: 15px 0;
-        }
-        input[type="text"] {
-            width: 65%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            font-size: 15px;
-        }
-        .search-btn {
-            padding: 10px 12px;
-            background-color: #ff0000;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 15px 0;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 10px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .yt { background-color: #ff0000; }
-        .tt { background-color: #000000; border: 1px solid #25f4ee; }
-        .fb { background-color: #1877f2; }
-        .video-container {
-            margin-top: 15px;
-            background: #1e293b;
-            padding: 10px;
-            border-radius: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watch & Earn - Unlimited ویڈیوز</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      min-height: 100vh;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+    }
+    .app-container {
+      width: 100%;
+      max-width: 440px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      color: #38bdf8;
+      margin-bottom: 4px;
+    }
+    header p {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    .balance-card {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .balance-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    .coins-display {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 6px 0;
+    }
+    .usd-display {
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.18);
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      background: #0f172a;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+      border: 1px solid #334155;
+    }
+    .section-title {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #e2e8f0;
+      border-right: 4px solid #38bdf8;
+      padding-right: 8px;
+    }
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .platform-btn {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 6px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .platform-btn:active {
+      transform: scale(0.96);
+    }
+    .yt-btn { background: #dc2626; }
+    .tt-btn { background: #111827; border: 1px solid #475569; }
+    .fb-btn { background: #1d4ed8; }
+
+    .timer-box {
+      background: #0f172a;
+      border: 1px dashed #475569;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .timer-text {
+      font-size: 0.9rem;
+      color: #fbbf24;
+      margin-bottom: 10px;
+    }
+    .claim-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: #10b981;
+      color: #fff;
+    }
+    .claim-btn:disabled {
+      background: #475569;
+      color: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    .withdraw-box {
+      background: #0f172a;
+      border-radius: 12px;
+      padding: 15px;
+      border: 1px solid #334155;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      color: #cbd5e1;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #475569;
+      background: #1e293b;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+    .withdraw-btn {
+      width: 100%;
+      padding: 12px;
+      background: #f59e0b;
+      color: #0f172a;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .message-box {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      display: none;
+    }
+    .msg-success { background: rgba(16, 185, 129, 0.2); color: #34d399; display: block; }
+    .msg-error { background: rgba(239, 68, 68, 0.2); color: #f87171; display: block; }
+    .history-list {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+  </style>
 </head>
 <body>
 
-    <h2>Watch & Earn Cash</h2>
-    <p>ویڈیوز دیکھیں اور پوائنٹس کمائیں!</p>
+<div class="app-container">
+  <header>
+    <h1>Watch &amp; Earn Cash</h1>
+    <p>لامحدود ویڈیوز دیکھیں اور کوائنز جمع کریں!</p>
+  </header>
 
-    <!-- Wallet & Withdrawal Section -->
-    <div class="wallet-box">
-        <p>آپ کا موجودہ بیلنس</p>
-        <div class="balance" id="userBalance">$5.00</div>
-        
-        <!-- Direct Input Field inside the App -->
-        <input type="text" id="userAccountNo" class="account-input" placeholder="اپنا EasyPaisa یا JazzCash نمبر درج کریں">
-        <br>
-        <button class="withdraw-btn" onclick="sendWithdrawRequest()">EasyPaisa / JazzCash ودھڈرا کریں</button>
+  <div class="balance-card">
+    <div class="balance-label">آپ کا موجودہ بیلنس</div>
+    <div class="coins-display"><span id="coinsCount">0</span> Coins</div>
+    <div class="usd-display">مالیت: $<span id="usdAmount">0.00</span> (10,000 Coins = $1.00)</div>
+  </div>
+
+  <div class="stats-row">
+    <span>فی ویڈیو انعام: <strong>25 Coins</strong></span>
+    <span>حد: <strong>Unlimited</strong> (دیکھی گئیں: <strong id="totalWatched">0</strong>)</span>
+  </div>
+
+  <h2 class="section-title">1. ویڈیو دیکھنے کے لیے پلیٹ فارم منتخب کریں</h2>
+  <div class="platform-grid">
+    <button class="platform-btn yt-btn" onclick="startTask('YouTube', 'https://www.youtube.com')">YouTube</button>
+    <button class="platform-btn tt-btn" onclick="startTask('TikTok', 'https://www.tiktok.com')">TikTok</button>
+    <button class="platform-btn fb-btn" onclick="startTask('Facebook', 'https://www.facebook.com')">Facebook</button>
+  </div>
+
+  <div class="timer-box">
+    <div id="timerStatus" class="timer-text">کسی بھی بٹن پر کلک کر کے 30 سیکنڈ ویڈیو دیکھیں</div>
+    <button id="claimBtn" class="claim-btn" onclick="claimReward()" disabled>انعام حاصل کریں (+25 Coins)</button>
+  </div>
+
+  <h2 class="section-title">2. رقم نکلوائیں (کم از کم 50,000 Coins = $5.00)</h2>
+  <div class="withdraw-box">
+    <div class="form-group">
+      <label for="method">ادائیگی کا طریقہ منتخب کریں</label>
+      <select id="method">
+        <option value="EasyPaisa">EasyPaisa</option>
+        <option value="JazzCash">JazzCash</option>
+        <option value="Payoneer / Bank">Payoneer / Bank Transfer</option>
+      </select>
     </div>
 
-    <!-- YouTube Search Bar -->
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="YouTube پر ویڈیو سرچ کریں...">
-        <button class="search-btn" onclick="searchYouTube()">Search</button>
+    <div class="form-group">
+      <label for="accountName">اکاؤنٹ ہولڈر کا نام</label>
+      <input type="text" id="accountName" placeholder="اپنا پورا نام لکھیں" />
     </div>
 
-    <!-- Direct Social Media Buttons -->
-    <div class="social-buttons">
-        <a href="https://www.youtube.com" target="_blank" onclick="addReward()" class="btn yt">YouTube</a>
-        <a href="https://www.tiktok.com" target="_blank" onclick="addReward()" class="btn tt">TikTok</a>
-        <a href="https://www.facebook.com" target="_blank" onclick="addReward()" class="btn fb">Facebook</a>
+    <div class="form-group">
+      <label for="accountNumber">اکاؤنٹ نمبر یا ای میل</label>
+      <input type="text" id="accountNumber" placeholder="03XXXXXXXXX یا ای میل" />
     </div>
 
-    <!-- Player Container -->
-    <div class="video-container" onclick="addReward()">
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
-        <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;">فلم یا ویڈیو دیکھنے پر 2.00$ ملیں گے!</p>
-    </div>
+    <button class="withdraw-btn" onclick="submitWithdraw()">وڈرا کی درخواست بھیجیں</button>
+    <div id="withdrawMsg" class="message-box"></div>
+    <div id="withdrawHistory" class="history-list"></div>
+  </div>
+</div>
 
-    <script>
-        let currentBalance = 5.00;
-        let myWhatsAppNumber = "923149371732";
+<script>
+  const REWARD_PER_VIDEO = 25;         // ہر ویڈیو پر 25 کوائنز
+  const COINS_PER_DOLLAR = 10000;      // 10,000 کوائنز = 1 ڈالر
+  const MIN_WITHDRAW_COINS = 50000;    // کم از کم 50,000 کوائنز ($5.00)
+  const WATCH_SECONDS = 30;            // 30 سیکنڈ کا ٹائمر
 
-        function addReward() {
-            currentBalance += 2.00;
-            document.getElementById('userBalance').innerText = '$' + currentBalance.toFixed(2);
-        }
+  let timerInterval = null;
+  let rewardReady = false;
 
-        function searchYouTube() {
-            let query = document.getElementById('searchInput').value;
-            if(query) {
-                addReward();
-                window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(query), '_blank');
-            }
-        }
+  function getAppData() {
+    return JSON.parse(localStorage.getItem('watchEarnUnlimitedData')) || {
+      coins: 100,
+      totalWatched: 0,
+      history: []
+    };
+  }
 
-        function sendWithdrawRequest() {
-            let accountNo = document.getElementById('userAccountNo').value;
-            if(!accountNo) {
-                alert("برائے مہربانی اپنا EasyPaisa یا JazzCash نمبر درج کریں!");
-                return;
-            }
-            let message = `New Withdrawal Request!%0AAccount Number: ${accountNo}%0AAmount: $${currentBalance.toFixed(2)}`;
-            let whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-        }
-    </script>
+  function saveAppData(data) {
+    localStorage.setItem('watchEarnUnlimitedData', JSON.stringify(data));
+  }
+
+  function updateUI() {
+    const data = getAppData();
+    document.getElementById('coinsCount').textContent = data.coins.toLocaleString();
+    document.getElementById('usdAmount').textContent = (data.coins / COINS_PER_DOLLAR).toFixed(2);
+    document.getElementById('totalWatched').textContent = data.totalWatched;
+
+    const historyDiv = document.getElementById('withdrawHistory');
+    if (data.history.length > 0) {
+      const last = data.history[data.history.length - 1];
+      historyDiv.innerHTML = `آخری درخواست: <strong>${last.coins.toLocaleString()} Coins ($${last.usd})</strong> بذریعہ ${last.method} (${last.status})`;
+    }
+  }
+
+  function startTask(platform, url) {
+    window.open(url, '_blank');
+
+    clearInterval(timerInterval);
+    rewardReady = false;
+    const claimBtn = document.getElementById('claimBtn');
+    const timerStatus = document.getElementById('timerStatus');
+    claimBtn.disabled = true;
+
+    let secondsLeft = WATCH_SECONDS;
+    timerStatus.textContent = `${platform} کھل گیا ہے! انعام کے لیے ${secondsLeft} سیکنڈ انتظار کریں...`;
+
+    timerInterval = setInterval(() => {
+      secondsLeft--;
+      if (secondsLeft > 0) {
+        timerStatus.textContent = `براہ کرم ویڈیو دیکھیں... باقی وقت: ${secondsLeft} سیکنڈ`;
+      } else {
+        clearInterval(timerInterval);
+        rewardReady = true;
+        timerStatus.textContent = 'وقت پورا ہو گیا! اب نیچے بٹن دبا کر کوائنز حاصل کریں۔';
+        claimBtn.disabled = false;
+      }
+    }, 1000);
+  }
+
+  function claimReward() {
+    if (!rewardReady) return;
+
+    const data = getAppData();
+    data.coins += REWARD_PER_VIDEO;
+    data.totalWatched += 1;
+    saveAppData(data);
+
+    rewardReady = false;
+    document.getElementById('claimBtn').disabled = true;
+    document.getElementById('timerStatus').textContent = `مبارک ہو! +${REWARD_PER_VIDEO} Coins آپ کے بیلنس میں شامل ہو گئے ہیں۔`;
+
+    updateUI();
+  }
+
+  function submitWithdraw() {
+    const data = getAppData();
+    const method = document.getElementById('method').value;
+    const name = document.getElementById('accountName').value.trim();
+    const account = document.getElementById('accountNumber').value.trim();
+    const msgBox = document.getElementById('withdrawMsg');
+
+    if (data.coins < MIN_WITHDRAW_COINS) {
+      msgBox.className = 'message-box msg-error';
+      msgBox.textContent = `وڈرا کے لیے کم از کم ${MIN_WITHDRAW_COINS.toLocaleString()} Coins ($5.00) ہونا ضروری ہیں۔`;
+      return;
+    }
+
+    if (!name || !account) {
+      msgBox.className = 'message-box msg-error';
+      msgBox.textContent = 'براہ کرم اکاؤنٹ ہولڈر کا نام اور نمبر درج کریں۔';
+      return;
+    }
+
+    const withdrawCoins = data.coins;
+    const withdrawUsd = (withdrawCoins / COINS_PER_DOLLAR).toFixed(2);
+
+    data.coins = 0;
+    data.history.push({
+      method: method,
+      name: name,
+      account: account,
+      coins: withdrawCoins,
+      usd: withdrawUsd,
+      status: 'زیرِ غور (Pending)'
+    });
+    saveAppData(data);
+
+    document.getElementById('accountName').value = '';
+    document.getElementById('accountNumber').value = '';
+
+    msgBox.className = 'message-box msg-success';
+    msgBox.textContent = `آپ کی $${withdrawUsd} (${withdrawCoins.toLocaleString()} Coins) کی درخواست جمع ہو گئی ہے!`;
+
+    updateUI();
+  }
+
+  updateUI();
+</script>
 
 </body>
 </html>
