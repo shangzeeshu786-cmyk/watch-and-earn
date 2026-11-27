@@ -1,198 +1,126 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ur">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Watch & Earn Cash</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: linear-gradient(135deg, #0f172a, #1e293b); color: #f8fafc; min-height: 100vh; padding: 16px; display: flex; justify-content: center; }
-    .app-container { width: 100%; max-width: 440px; background: #1e293b; border: 1px solid #334155; border-radius: 18px; padding: 20px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); }
-    header { text-align: center; margin-bottom: 18px; }
-    header h1 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 4px; }
-    header p { font-size: 0.9rem; color: #cbd5e1; }
-    .balance-card { background: linear-gradient(135deg, #0284c7, #2563eb); border-radius: 14px; padding: 18px; text-align: center; margin-bottom: 16px; }
-    .balance-label { font-size: 0.9rem; opacity: 0.92; }
-    .coins-display { font-size: 2rem; font-weight: bold; margin: 6px 0; }
-    .usd-display { font-size: 0.9rem; background: rgba(255, 255, 255, 0.18); display: inline-block; padding: 5px 12px; border-radius: 20px; }
-    .stats-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: #0f172a; padding: 10px 14px; border-radius: 10px; font-size: 0.85rem; margin-bottom: 18px; border: 1px solid #334155; }
-    .section-title { font-size: 1rem; margin-bottom: 10px; color: #e2e8f0; border-left: 4px solid #38bdf8; padding-left: 8px; }
-    .platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
-    .platform-btn { border: none; border-radius: 10px; padding: 12px 6px; color: #fff; font-weight: bold; font-size: 0.9rem; cursor: pointer; }
-    .yt-btn { background: #dc2626; }
-    .tt-btn { background: #111827; border: 1px solid #475569; }
-    .fb-btn { background: #1d4ed8; }
-    .timer-box { background: #0f172a; border: 1px dashed #475569; border-radius: 12px; padding: 14px; text-align: center; margin-bottom: 20px; }
-    .timer-text { font-size: 0.9rem; color: #fbbf24; margin-bottom: 10px; }
-    .claim-btn { width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 1rem; font-weight: bold; cursor: pointer; background: #10b981; color: #fff; }
-    .claim-btn:disabled { background: #475569; color: #94a3b8; cursor: not-allowed; }
-    .withdraw-box { background: #0f172a; border-radius: 12px; padding: 15px; border: 1px solid #334155; }
-    .form-group { margin-bottom: 12px; }
-    .form-group label { display: block; font-size: 0.85rem; margin-bottom: 4px; color: #cbd5e1; }
-    .form-group input, .form-group select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: #fff; font-size: 0.9rem; }
-    .withdraw-btn { width: 100%; padding: 12px; background: #f59e0b; color: #0f172a; font-weight: bold; border: none; border-radius: 10px; font-size: 1rem; cursor: pointer; }
-    .message-box { margin-top: 10px; font-size: 0.85rem; text-align: center; padding: 8px; border-radius: 8px; display: none; }
-    .msg-success { background: rgba(16, 185, 129, 0.2); color: #34d399; display: block; }
-    .msg-error { background: rgba(239, 68, 68, 0.2); color: #f87171; display: block; }
-    .history-list { margin-top: 12px; font-size: 0.8rem; color: #94a3b8; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watch & Earn Pakistan</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;text-align:center;background:#e8f5e9;padding-bottom:90px}
+.header{background:#00b14f;color:#fff;padding:18px;font-size:20px;font-weight:bold}
+.card{background:#fff;margin:12px;padding:18px;border-radius:15px;box-shadow:0 2px 10px #ccc}
+.coin{font-size:32px;font-weight:bold;color:#ff9800;margin:5px}
+button{background:#00b14f;color:#fff;border:0;padding:13px 22px;border-radius:10px;font-size:16px;margin:6px;cursor:pointer}
+button:active{transform:scale(0.95)}
+input,select{padding:12px;width:88%;border-radius:8px;border:1px solid #ccc;text-align:center;font-size:15px;margin:4px}
+.video-btn{background:#fff;color:#000;border:1px solid #ddd}
+.small{font-size:12px;color:gray;margin-top:5px}
+</style>
 </head>
 <body>
-<div class="app-container">
-  <header>
-    <h1>Watch &amp; Earn Cash</h1>
-    <p>Watch unlimited videos and collect coins!</p>
-  </header>
-  <div class="balance-card">
-    <div class="balance-label">Your current balance</div>
-    <div class="coins-display"><span id="coinsCount">0</span> Coins</div>
-    <div class="usd-display">Value: $<span id="usdAmount">0.00</span> (10,000 Coins = $1.00)</div>
-  </div>
-  <div class="stats-row">
-    <span>Reward per video: <strong>25 Coins</strong></span>
-    <span>Limit: <strong>Unlimited</strong> (Views: <strong id="totalWatched">0</strong>)</span>
-  </div>
-  <h2 class="section-title">1. Select the platform to watch the video</h2>
-  <div class="platform-grid">
-    <button class="platform-btn fb-btn" onclick="startTask('Facebook', 'https://www.facebook.com')">Facebook</button>
-    <button class="platform-btn tt-btn" onclick="startTask('TikTok', 'https://www.tiktok.com')">TikTok</button>
-    <button class="platform-btn yt-btn" onclick="startTask('YouTube', 'https://www.youtube.com')">YouTube</button>
-  </div>
-  <div class="timer-box">
-    <div id="timerStatus" class="timer-text">Watch a 30-second video by clicking any button.</div>
-    <button id="claimBtn" class="claim-btn" onclick="claimReward()" disabled>Get Reward (+25 Coins)</button>
-  </div>
-  <h2 class="section-title">2. Withdraw (at least 50,000 Coins = $5.00)</h2>
-  <div class="withdraw-box">
-    <div class="form-group">
-      <label for="method">Select payment method</label>
-      <select id="method">
-        <option value="EasyPaisa">EasyPaisa</option>
-        <option value="JazzCash">JazzCash</option>
-        <option value="Payoneer / Bank">Payoneer / Bank Transfer</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="accountName">Account holder name</label>
-      <input type="text" id="accountName" placeholder="Write your full name" />
-    </div>
-    <div class="form-group">
-      <label for="accountNumber">Account number or email</label>
-      <input type="text" id="accountNumber" placeholder="03XXXXXXXXX or email" />
-    </div>
-    <button class="withdraw-btn" onclick="submitWithdraw()">Submit Withdrawal Request</button>
-    <div id="withdrawMsg" class="message-box"></div>
-    <div id="withdrawHistory" class="history-list"></div>
-  </div>
+
+<div class="header">💰 Watch & Earn Pakistan</div>
+
+<div class="card">
+  <div class="coin">🪙 <span id="coins">125</span> Coins</div>
+  <p><b><span id="rs">0.62</span> Rs</b> | 200 Coins = 1 Rs</p>
+  <p>Har Video = <b>25 Coins</b> | Rozana Limit: 30 Video</p>
+  <p class="small">10,000 Coins = 50 Rs | 20,000 Coins = 100 Rs</p>
+</div>
+
+<div class="card">
+  <h3>Video Dekho - Coin Kamao</h3>
+  <br>
+  <button class="video-btn" onclick="watchVideo('YouTube')">▶️ YouTube</button>
+  <button class="video-btn" onclick="watchVideo('TikTok')">🎵 TikTok</button>
+  <button class="video-btn" onclick="watchVideo('Facebook')">📘 Facebook</button>
+  <br><br>
+  <iframe width="100%" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+  <p class="small">Video dekhte raho - neeche ad bhi chalta rahega</p>
+</div>
+
+<div class="card">
+  <h3>Withdraw - EasyPaisa / JazzCash</h3>
+  <p style="margin:8px">Minimum: <b>20,000 Coins = 100 Rs</b></p>
+  <select id="method">
+    <option>EasyPaisa</option>
+    <option>JazzCash</option>
+  </select><br>
+  <input id="number" placeholder="03XX-XXXXXXX - Apna Number">
+  <br>
+  <button onclick="withdraw()">💸 100 Rs Withdraw Karo</button>
+  <p id="msg" style="color:green;margin-top:8px;font-weight:bold"></p>
+  <p class="small">Payment 24 ghante me milega - 03149371732 se rabta</p>
+</div>
+
+<div class="card">
+  <h3>Refer & Earn</h3>
+  <p>Apna link share karo - Har dost pe <b>500 Coins</b></p>
+  <button onclick="share()" style="background:#1877F2">Share Karo</button>
 </div>
 
 <script>
-  const REWARD_PER_VIDEO = 25;
-  const COINS_PER_DOLLAR = 10000;
-  const MIN_WITHDRAW_COINS = 50000;
-  const WATCH_SECONDS = 30;
+let coinsPerVideo = 25;
+let minWithdraw = 20000;
 
-  let timerInterval = null;
-  let rewardReady = false;
+let coins = localStorage.getItem('pk_final_coins');
+if(!coins) coins = 125;
+coins = parseInt(coins);
+update();
 
-  function getAppData() {
-    return JSON.parse(localStorage.getItem('watchEarnUnlimitedData')) || {
-      coins: 100,
-      totalWatched: 0,
-      history: []
-    };
+function update(){
+  document.getElementById('coins').innerText = coins;
+  document.getElementById('rs').innerText = (coins/200).toFixed(2);
+  localStorage.setItem('pk_final_coins', coins);
+}
+
+function watchVideo(platform){
+  coins = coins + 25;
+  update();
+  alert("Mubarak! +25 Coins! Total: " + coins + " Coins");
+  if(platform=='YouTube') window.open('https://youtube.com');
+  if(platform=='TikTok') window.open('https://tiktok.com');
+  if(platform=='Facebook') window.open('https://facebook.com');
+}
+
+function withdraw(){
+  let num = document.getElementById('number').value;
+  let m = document.getElementById('method').value;
+  if(coins >= 20000){
+    if(num.length < 11){ alert("Sahi PK number daalo 03XX-XXXXXXX"); return; }
+
+    // TUMHARA NUMBER - 03149371732
+    let tumharaNumber = "923149371732";
+
+    let msg = "NEW WITHDRAW - " + m + " 100 Rs - User Number: " + num + " - Coins: " + coins;
+    window.open("https://wa.me/" + tumharaNumber + "?text=" + encodeURIComponent(msg));
+
+    // 20000 hai -> 0 ho jayega | 25000 hai -> 5000 bach jayega
+    coins = coins - 20000;
+    update();
+    document.getElementById('msg').innerText = "Request bhej di! 100 Rs " + m + " " + num + " pe 24h me mil jayenge! Bache hue: " + coins + " Coins";
+  } else {
+    alert("Abhi " + (20000 - coins) + " Coins aur chahiye! 100 Rs ke liye 20,000 chahiye. Tumhare paas: " + coins);
   }
+}
 
-  function saveAppData(d) {
-    localStorage.setItem('watchEarnUnlimitedData', JSON.stringify(d));
-  }
-
-  function updateUI() {
-    const d = getAppData();
-    document.getElementById('coinsCount').textContent = d.coins.toLocaleString();
-    document.getElementById('usdAmount').textContent = (d.coins / COINS_PER_DOLLAR).toFixed(2);
-    document.getElementById('totalWatched').textContent = d.totalWatched;
-
-    const h = document.getElementById('withdrawHistory');
-    if (d.history.length > 0) {
-      const last = d.history[d.history.length - 1];
-      h.innerHTML = `Last request: <strong>${last.coins.toLocaleString()} Coins ($${last.usd})</strong> via ${last.method} (${last.status})`;
-    }
-  }
-
-  function startTask(platform, url) {
-    window.open(url, '_blank');
-    clearInterval(timerInterval);
-    rewardReady = false;
-
-    const btn = document.getElementById('claimBtn');
-    const status = document.getElementById('timerStatus');
-    btn.disabled = true;
-
-    let left = WATCH_SECONDS;
-    status.textContent = `${platform} opened! Wait ${left} seconds for reward...`;
-
-    timerInterval = setInterval(() => {
-      left--;
-      if (left > 0) {
-        status.textContent = `Please watch the video... Time left: ${left}s`;
-      } else {
-        clearInterval(timerInterval);
-        rewardReady = true;
-        status.textContent = 'Timer complete! Click the button below to claim coins.';
-        btn.disabled = false;
-      }
-    }, 1000);
-  }
-
-  function claimReward() {
-    if (!rewardReady) return;
-    const d = getAppData();
-    d.coins += REWARD_PER_VIDEO;
-    d.totalWatched += 1;
-    saveAppData(d);
-
-    rewardReady = false;
-    document.getElementById('claimBtn').disabled = true;
-    document.getElementById('timerStatus').textContent = `Congrats! +${REWARD_PER_VIDEO} Coins added to your balance.`;
-    updateUI();
-  }
-
-  function submitWithdraw() {
-    const d = getAppData();
-    const method = document.getElementById('method').value;
-    const name = document.getElementById('accountName').value.trim();
-    const account = document.getElementById('accountNumber').value.trim();
-    const msg = document.getElementById('withdrawMsg');
-
-    if (d.coins < MIN_WITHDRAW_COINS) {
-      msg.className = 'message-box msg-error';
-      msg.textContent = `Minimum ${MIN_WITHDRAW_COINS.toLocaleString()} Coins ($5.00) required to withdraw.`;
-      return;
-    }
-
-    if (!name || !account) {
-      msg.className = 'message-box msg-error';
-      msg.textContent = 'Please enter account holder name and account number.';
-      return;
-    }
-
-    const wCoins = d.coins;
-    const wUsd = (wCoins / COINS_PER_DOLLAR).toFixed(2);
-
-    d.coins = 0;
-    d.history.push({ method, name, account, coins: wCoins, usd: wUsd, status: 'Pending' });
-    saveAppData(d);
-
-    document.getElementById('accountName').value = '';
-    document.getElementById('accountNumber').value = '';
-
-    msg.className = 'message-box msg-success';
-    msg.textContent = `Your request for $${wUsd} (${wCoins.toLocaleString()} Coins) has been submitted!`;
-    updateUI();
-  }
-
-  updateUI();
+function share(){
+  let link = window.location.href;
+  window.open("https://wa.me/?text=" + encodeURIComponent("Mujhe 100 Rs mile! Tum bhi kamao: " + link));
+}
 </script>
+
+<!-- ADMOB BANNER - TUMHARI ID -->
+<div style="position:fixed;bottom:0;left:0;right:0;background:#fff;text-align:center;padding:6px;border-top:1px solid #ccc;z-index:999">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-9492225578071595"
+       data-ad-slot="5507697608"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9492225578071595"></script>
+
 </body>
 </html>
