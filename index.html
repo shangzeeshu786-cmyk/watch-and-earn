@@ -4,73 +4,196 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Watch & Earn Pakistan - Half Half</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>body{font-family:system-ui;background:#f0fdf4}.coin{animation:bounce 1s infinite}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9492225578071595" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#e8f5e9}
+.box{max-width:430px;margin:auto;background:#fff;min-height:100vh;box-shadow:0 0 20px rgba(0,0,0,0.1)}
+.top{background:#16a34a;color:#fff;padding:18px 15px;text-align:center}
+.top h2{font-size:22px}
+.top small{opacity:0.9}
+.bal{margin:12px;background:linear-gradient(90deg,#facc15,#f97316);color:#fff;padding:16px;border-radius:16px}
+.bal h2{font-size:34px}
+.sec{padding:12px}
+.vid{width:100%;height:220px;background:#000;border-radius:12px}
+.vbtn{flex:1;padding:11px;border:0;border-radius:8px;color:#fff;font-weight:bold;cursor:pointer}
+.timerBox{background:#f3f4f6;border-radius:12px;padding:12px;text-align:center;margin-top:10px}
+.claim{width:100%;padding:14px;border:0;border-radius:12px;font-weight:bold;color:#fff;background:#9ca3af;margin-top:10px;font-size:16px}
+.claim.ok{background:#16a34a;cursor:pointer}
+.wbtn{width:100%;padding:12px;border:0;border-radius:10px;background:#16a34a;color:#fff;font-weight:bold;margin-top:6px;cursor:pointer}
+.adbox{background:#f9fafb;border:1px dashed #9ca3af;text-align:center;padding:12px;font-size:12px;margin:10px 12px;border-radius:10px;color:#666}
+.withdrawBox{border:2px solid #16a34a;background:#f0fdf4;border-radius:16px;padding:14px}
+.task{border:1px solid #e5e7eb;border-radius:12px;padding:12px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
+</style>
 </head>
-<body class="pb-10">
-<div class="max-w-md mx-auto bg-white min-h-screen shadow-lg">
-<div class="bg-green-600 text-white p-4 text-center sticky top-0 z-10">
-<h1 class="text-xl font-bold">💰 Watch & Earn Pakistan</h1>
-<p class="text-xs opacity-90">Half Half - Tum bhi kamao, Hum bhi kamayen 🤝</p>
+<body>
+<div class="box">
+  <div class="top">
+    <h2>💰 Watch & Earn Pakistan</h2>
+    <small>Half Half - 100 Coins = 1 Rs | Admin: 03149371732</small>
+  </div>
+
+  <div class="bal">
+    <small>Total Coins</small>
+    <h2><span id="coins">125</span> 🪙</h2>
+    <p><span id="rs">1.25</span> Rs | Har Video = 25 Coins | Daily Bonus = 100</p>
+  </div>
+
+  <!-- AD 1 - TOP -->
+  <div class="adbox">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9492225578071595" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    <p>📢 Sponsored Ad - Half Half Yahi Se Hoga</p>
+  </div>
+
+  <div class="sec">
+    <b>🎬 Video Dekho - Paisa Kamao</b><br><br>
+    <video id="v" class="vid" controls playsinline poster="https://i.imgur.com/7D2d3Z9.jpg">
+      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+    </video>
+    <div style="display:flex;gap:6px;margin-top:8px">
+      <button class="vbtn" style="background:#ef4444" onclick="ch(0)">Video 1</button>
+      <button class="vbtn" style="background:#000" onclick="ch(1)">Video 2</button>
+      <button class="vbtn" style="background:#3b82f6" onclick="ch(2)">Video 3</button>
+    </div>
+    <div class="timerBox">
+      <p>⏱️ Video Timer: <b id="timer">15</b> sec</p>
+      <button id="claimBtn" class="claim" onclick="claimCoin()">⏳ Video dekho... <span id="sl">15</span>s</button>
+      <p style="font-size:12px;color:#666;margin-top:6px">Video pura dekho - phir Claim dabao</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="task">
+      <div><b>🎁 Daily Bonus</b><br><small>+100 Coins FREE</small></div>
+      <button onclick="bonus()" style="padding:10px 16px;background:#facc15;border:0;border-radius:8px;font-weight:bold">CLAIM</button>
+    </div>
+    <div class="task">
+      <div><b>👥 Refer & Earn</b><br><small>Har dost = 200 Coins</small></div>
+      <button onclick="invite()" style="padding:10px 16px;background:#16a34a;color:#fff;border:0;border-radius:8px;font-weight:bold">INVITE</button>
+    </div>
+    <div class="task">
+      <div><b>📺 YouTube Subscribe</b><br><small>+50 Coins</small></div>
+      <button onclick="yt()" style="padding:10px 16px;background:#ff0000;color:#fff;border:0;border-radius:8px;font-weight:bold">SUBSCRIBE</button>
+    </div>
+  </div>
+
+  <!-- AD 2 - MIDDLE -->
+  <div class="adbox">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9492225578071595" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    <p>📢 AdMob ID: ca-pub-9492225578071595</p>
+  </div>
+
+  <div class="sec">
+    <div class="withdrawBox">
+      <b>💸 Withdraw - JazzCash / EasyPaisa</b>
+      <p style="background:#fff;padding:10px;border-radius:8px;margin-top:8px">Coins: <b><span id="coins2">125</span> = <span id="rs2">1.25</span> Rs</b></p>
+      <button class="wbtn" onclick="wd(5000,50)">5000 🪙 = 50 Rs - WITHDRAW</button>
+      <button class="wbtn" style="background:#15803d" onclick="wd(10000,100)">10000 🪙 = 100 Rs - WITHDRAW</button>
+      <button class="wbtn" style="background:#f97316" onclick="wd(20000,200)">20000 🪙 = 200 Rs - WITHDRAW</button>
+      <div id="hist"></div>
+      <p style="font-size:11px;color:#666;margin-top:8px;text-align:center">Withdraw WhatsApp pe jayega: 03149371732</p>
+    </div>
+  </div>
+
+  <div class="sec" style="text-align:center;padding-bottom:30px">
+    <p style="font-size:13px;color:#666">Half Half App - 50% Tumhara 50% Hamara</p>
+    <p style="font-size:12px;color:#999">Made in Pakistan 🇵🇰 | Version 1.0</p>
+  </div>
 </div>
-<div class="p-4">
-<div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-4 text-white flex justify-between items-center">
-<div>
-<p class="text-xs">Total Coins</p>
-<h2 class="text-3xl font-bold"><span id="coins">125</span> 🪙</h2>
-<p class="text-sm"><span id="rs">1.25</span> Rs | 100 Coins = 1 Rs</p>
-<p class="text-[11px] bg-black/20 inline-block px-2 py-0.5 rounded-full mt-1">Har Video = 25 Coins = 0.25 Rs - HALF HALF</p>
-</div>
-<div class="text-5xl coin">🪙</div>
-</div>
-<div class="grid grid-cols-3 gap-2 mt-3 text-center text-xs">
-<div class="bg-green-50 border border-green-200 rounded-xl p-2"><b class="block text-green-700 text-sm">UNLIMITED</b>Videos</div>
-<div class="bg-blue-50 border border-blue-200 rounded-xl p-2"><b class="block text-blue-700 text-sm">50/50</b>Profit Share</div>
-<div class="bg-purple-50 border border-purple-200 rounded-xl p-2"><b class="block text-purple-700 text-sm">MONTHLY</b>Withdraw</div>
-</div>
-</div>
-<div class="px-4">
-<h3 class="font-bold mb-2">🎬 Video Dekho - Coin Kamao - Unlimited</h3>
-<div class="bg-black rounded-xl overflow-hidden">
-<iframe id="ytplayer" width="100%" height="210" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-</div>
-<div class="flex gap-2 mt-2">
-<button onclick="changeVideo('dQw4w9WgXcQ')" class="flex-1 bg-red-500 text-white text-xs py-2 rounded-lg">YouTube 1</button>
-<button onclick="changeVideo('LXb3EKWsInQ')" class="flex-1 bg-black text-white text-xs py-2 rounded-lg">TikTok Style</button>
-<button onclick="changeVideo('e-ORhEE9VVg')" class="flex-1 bg-blue-500 text-white text-xs py-2 rounded-lg">Viral</button>
-</div>
-<div class="mt-3 bg-gray-100 rounded-xl p-3 text-center">
-<p class="text-sm">Video: <span id="timer" class="font-bold text-green-600">15</span> sec baad coin milega</p>
-<div class="w-full bg-gray-300 h-2 rounded-full mt-2 overflow-hidden"><div id="progress" class="bg-green-500 h-2" style="width:0%"></div></div>
-<button id="claimBtn" onclick="claimCoin()" disabled class="w-full mt-3 bg-gray-400 text-white py-3 rounded-xl font-bold">⏳ Video dekh rahe ho... <span id="secLeft">15</span>s</button>
-<p class="text-[11px] text-gray-500 mt-1">AdMob Ad yahan ayega - usi se Half Half hoga</p>
-</div>
-</div>
-<div class="px-4 mt-4 grid grid-cols-2 gap-2">
-<button onclick="dailyBonus()" class="bg-yellow-100 border border-yellow-300 rounded-xl p-3 text-left"><span class="text-xl">🎁</span><b class="block text-sm">Daily Check-in</b><span class="text-xs">+100 Coins</span></button>
-<button onclick="referral()" class="bg-pink-100 border border-pink-300 rounded-xl p-3 text-left"><span class="text-xl">👥</span><b class="block text-sm">Referral</b><span class="text-xs">+500 Coins / dost</span></button>
-</div>
-<div class="px-4 mt-4">
-<div class="border-2 border-green-500 rounded-2xl p-4 bg-green-50">
-<h3 class="font-bold text-green-800">💸 Withdraw - JazzCash / EasyPaisa</h3>
-<p class="text-xs mt-1">100 Coins = 1 Rs • 5000 Coins = 50 Rs Minimum</p>
-<div class="flex justify-between text-sm mt-3 bg-white p-2 rounded-lg"><span>Tumhare Coins:</span><b><span id="coins2">125</span> = <span id="rs2">1.25</span> Rs</b></div>
-<div class="grid grid-cols-2 gap-2 mt-3">
-<button onclick="withdraw(5000,50)" class="bg-green-600 text-white py-2 rounded-lg font-bold text-sm">5000 🪙 = 50 Rs</button>
-<button onclick="withdraw(10000,100)" class="bg-green-700 text-white py-2 rounded-lg font-bold text-sm">10000 🪙 = 100 Rs</button>
-</div>
-<div class="mt-3 bg-yellow-50 border border-yellow-300 text-[11px] p-2 rounded-lg leading-4">
-<b>⚠️ IMPORTANT - Kaise payment milega:</b><br>
-• Withdraw request PENDING me jayegi<br>
-• Payment har month ki 1-5 tareekh ko hoga<br>
-• Jab Google AdMob se payment ayega, tab apko JazzCash/EasyPaisa milega<br>
-• Ye Half Half system hai - pehle Google dega, phir hum denge - apki mehnat safe hai!
-</div>
-<div id="history" class="mt-2 text-xs"></div>
-</div>
-<p class="text-center text-[11px] text-gray-400 mt-3">AdMob ID: ca-pub-9492225578071595 • Support: 03149371732 • Half Half Pakistan</p>
-</div>
-</div>
+
 <script>
-let coins = parseInt(localStorage.getItem('coins') || '125');
-let timeLeft =
+var coins = 125;
+try{ var saved = localStorage.getItem('mycoins'); if(saved){ coins = parseInt(saved); } }catch(e){}
+var tl = 15, iv;
+
+function up(){
+  document.getElementById('coins').innerText = coins;
+  document.getElementById('coins2').innerText = coins;
+  var r = (coins/100).toFixed(2);
+  document.getElementById('rs').innerText = r;
+  document.getElementById('rs2').innerText = r;
+  try{ localStorage.setItem('mycoins', coins); }catch(e){}
+}
+
+function ch(i){
+  var vids = [
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+  ];
+  var v = document.getElementById('v');
+  v.src = vids[i];
+  v.play();
+  start();
+}
+
+function start(){
+  tl = 15;
+  var b = document.getElementById('claimBtn');
+  b.disabled = true;
+  b.className = 'claim';
+  b.innerHTML = '⏳ Video dekho... <span id="sl">15</span>s';
+  clearInterval(iv);
+  iv = setInterval(function(){
+    tl--;
+    document.getElementById('timer').innerText = tl;
+    var sl = document.getElementById('sl');
+    if(sl) sl.innerText = tl;
+    if(tl <= 0){
+      clearInterval(iv);
+      b.disabled = false;
+      b.className = 'claim ok';
+      b.innerText = '✅ +25 Coins Lo! - CLICK KARO';
+    }
+  },1000);
+}
+
+function claimCoin(){
+  coins += 25;
+  up();
+  alert('+25 Coins mil gaye! Total: ' + coins + ' 🪙');
+  start();
+}
+
+function bonus(){
+  coins += 100;
+  up();
+  alert('+100 Daily Bonus! Total: ' + coins);
+}
+
+function invite(){
+  var link = "https://shangzeeshu786-cmyk.github.io/watch-and-earn/";
+  var txt = "Maine 125 coins kama liye! Tu bhi kama: " + link;
+  window.open("https://wa.me/?text=" + encodeURIComponent(txt), "_blank");
+  coins += 50;
+  up();
+}
+
+function yt(){
+  window.open("https://youtube.com", "_blank");
+  coins += 50;
+  up();
+  alert('+50 Coins YouTube ke liye!');
+}
+
+function wd(need, rs){
+  if(coins < need){
+    alert('Coins kam hain! Chahiye ' + need + ' tumhare ' + coins + ' hain. Video dekho!');
+    return;
+  }
+  var n = prompt('Apna JazzCash / EasyPaisa Number likho:');
+  if(!n) return;
+  coins -= need;
+  up();
+  var msg = "WITHDRAW REQUEST - " + rs + " Rs - Coins " + need + " - Number: " + n + " - Total bache: " + coins;
+  window.open('https://wa.me/923149371732?text=' + encodeURIComponent(msg), '_blank');
+  document.getElementById('hist').innerHTML = '<div style="background:#fff;padding:10px;border-radius:8px;margin-top:8px;border:1px solid #fcd34d">⏳ <b>' + rs + ' Rs PENDING</b> - ' + n + '<br><small>24 ghante me milega</small></div>';
+}
+
+up();
+start();
+</script>
+</body>
+</html>
