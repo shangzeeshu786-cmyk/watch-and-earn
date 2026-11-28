@@ -3,148 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Watch & Earn Pakistan - Half Half</title>
+<title>Watch & Earn - Long Video</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9492225578071595" crossorigin="anonymous"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f0f0f;color:white;text-align:center;padding:10px}
-.header{background:linear-gradient(45deg,#FF0000,#FF6B00);padding:15px;border-radius:12px;margin-bottom:10px}
-.header h1{font-size:22px}
-.balance{background:#1a1a1a;border:2px solid #FFD700;padding:15px;border-radius:12px;margin:10px 0}
-.balance h2{color:#FFD700;font-size:18px}
-.balance #bal{font-size:32px;color:#00FF00;font-weight:bold}
-.video-box{background:#000;border-radius:12px;overflow:hidden;margin:10px 0;position:relative}
-.video-box iframe{width:100%;height:220px;border:0}
-.timer{font-size:18px;color:#FFD700;margin:10px 0;font-weight:bold}
-.btn{width:100%;padding:16px;font-size:18px;font-weight:bold;border:none;border-radius:10px;cursor:pointer;margin:8px 0}
-.btn-claim{background:gray;color:white}
-.btn-claim.active{background:#00C853;color:white}
-.btn-withdraw{background:#25D366;color:white}
-.btn-next{background:#FF0000;color:white}
-.ad-box{margin:10px 0;background:white;border-radius:8px;padding:5px;min-height:100px;color:black}
-.task{ background:#1a1a1a;padding:12px;border-radius:10px;margin:8px 0;border-left:4px solid #FFD700;text-align:left}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#fff;padding:8px;text-align:center}
+.top{background:#FF0000;color:#fff;padding:12px;border-radius:10px}
+.bal{background:#FFF9C4;border:2px solid gold;padding:12px;border-radius:10px;margin:8px 0}
+.bal b{font-size:30px;color:green}
+.tabs{display:flex;gap:5px;margin:10px 0}
+.tab{flex:1;padding:12px;border:none;border-radius:8px;font-weight:bold;color:white;font-size:15px;cursor:pointer}
+.vbox{width:100%;height:280px;background:#000;border-radius:10px;overflow:hidden}
+.vbox iframe{width:100%;height:100%;border:0}
+.claim{width:100%;padding:16px;font-size:18px;font-weight:bold;border:none;border-radius:10px;background:gray;color:white;margin-top:10px}
+.claim.active{background:#00C853}
 </style>
 </head>
 <body>
+<div class="top"><h2>🔥 WATCH & EARN - LONG VIDEO 🔥</h2><p>YouTube - Facebook - TikTok - Sab Chalega</p></div>
+<div class="bal">Balance: <b id="bal">0 Rs</b><br>30 Sec Dekho = 10 Rs | Long Video = Zyada Paisa</div>
 
-<div class="header">
-<h1>🔥 WATCH & EARN PAKISTAN 🔥</h1>
-<p>Video Dekho - Paisa Kamao - Half Half</p>
-</div>
-
-<div class="balance">
-<h2>💰 Tumhara Balance</h2>
-<div id="bal">0 Rs</div>
-<p>1 Video = 10 Rs | 10 Video = 100 Rs</p>
-</div>
-
-<!-- AD 1 -->
-<div class="ad-box">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-9492225578071595"
-data-ad-slot="5507697608"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
+<div style="border:1px dashed #aaa;padding:8px;border-radius:8px">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9492225578071595" data-ad-slot="5507697608" data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-<p style="font-size:12px">Advertisement</p>
+<p style="font-size:12px">📢 Sponsored Ad - Half Half Yahi Se Hoga</p>
 </div>
 
-<div class="video-box" id="videoBox"></div>
-<div class="timer" id="timer">⏳ Video pe click karo - 15 sec dekho</div>
-
-<button class="btn btn-claim" id="claimBtn" disabled>🔒 Pehle 15 Sec Video Dekho</button>
-<button class="btn btn-next" onclick="nextVideo()">⏭️ Agli Video (Next)</button>
-
-<div class="task">
-<b>📋 Aaj ke Tasks:</b><br>
-✅ 1 Video = 10 Rs<br>
-✅ 5 Video = 50 Rs + Bonus<br>
-✅ Daily 20 Video = 200 Rs
+<div class="tabs">
+<button class="tab" style="background:red" onclick="showYT()">▶️ YouTube</button>
+<button class="tab" style="background:#1877F2" onclick="showFB()">📘 Facebook</button>
+<button class="tab" style="background:#000" onclick="showTK()">🎵 TikTok</button>
 </div>
 
-<button class="btn btn-withdraw" onclick="withdraw()">💸 WITHDRAW - WhatsApp Pe Paise Lo</button>
+<div class="vbox" id="vbox"></div>
 
-<!-- AD 2 -->
-<div class="ad-box">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-9492225578071595"
-data-ad-slot="5507697608"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<div style="margin:8px 0">
+<button onclick="nextVideo()" style="padding:10px 20px;background:#333;color:white;border:none;border-radius:20px">⏭️ Agli Long Video</button>
 </div>
 
-<p style="margin:15px 0;color:#aaa;font-size:13px">Withdraw Number: 03149371732<br>Minimum Withdraw: 100 Rs<br>Payment: JazzCash / Easypaisa</p>
+<div id="timer" style="font-size:18px;font-weight:bold">⏱️ 30 Sec Dekho - Paisa Milega</div>
+<button class="claim" id="claimBtn" disabled>⏳ Video dekh rahe ho... 30s</button>
+<p style="font-size:13px;color:gray;margin:5px">Video dekhte raho - band mat karo - 30 sec ke baad Claim ayega</p>
+
+<button onclick="withdraw()" style="width:100%;padding:15px;background:#25D366;color:white;border:none;border-radius:10px;font-size:18px;font-weight:bold;margin-top:8px">💸 WITHDRAW - 03149371732</button>
 
 <script>
-let videos = [
-"7R2s1O7sFjY",
-"dQw4w9WgXcQ",
-"jNQXAC9IVRw",
-"kJQP7kiw5Fk",
-"RgKAFK5djSk"
+// LONG YOUTUBE VIDEOS - 10-15 min wali
+let ytVideos = [
+"aqz-KE-bpKQ", // Big Buck Bunny - 10 min
+"LXb3EKWsInQ", // Relaxing Nature - Long
+"5qap5aO4i9A", // Lofi - Live Long
+"e-ORhEE9VVg", // Taylor Swift - Long
+"hTWKbfoikeg"  // Nirvana - Long
 ];
-let current = 0;
-let balance = parseInt(localStorage.getItem('myBal')||'0');
-let watched = false;
-let timerInt;
+// FACEBOOK VIDEOS - Public videos
+let fbVideos = [
+"https://www.facebook.com/facebook/videos/10153231379946729/",
+"https://www.facebook.com/facebook/videos/10154397875806729/"
+];
+// TIKTOK VIDEOS
+let tkVideos = [
+"7196081962216604934",
+"7210403039262391557",
+"7188091559004678917"
+];
+let ytIndex=0, fbIndex=0, tkIndex=0;
+let mode='YT';
+let balance=parseInt(localStorage.getItem('myBal')||'0');
+let sec=30, timer, canClaim=false;
 
-function loadVideo(){
-  watched=false;
-  document.getElementById('videoBox').innerHTML = `<iframe src="https://www.youtube.com/embed/${videos[current]}?autoplay=1&mute=1&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+function updateBal(){ document.getElementById('bal').innerText=balance+' Rs'; localStorage.setItem('myBal',balance); }
+
+function startTimer(){
+  canClaim=false; sec=30;
   let btn=document.getElementById('claimBtn');
-  btn.disabled=true;
-  btn.className='btn btn-claim';
-  btn.innerText='🔒 15 Sec Ruko...';
-  let sec=15;
-  document.getElementById('timer').innerText='⏳ '+sec+' Sec - Video dekh rahe ho...';
-  clearInterval(timerInt);
-  timerInt=setInterval(()=>{
+  btn.disabled=true; btn.className='claim'; btn.innerText='⏳ Video dekh rahe ho... 30s';
+  clearInterval(timer);
+  timer=setInterval(()=>{
     sec--;
-    document.getElementById('timer').innerText='⏳ '+sec+' Sec reh gaye...';
+    document.getElementById('timer').innerText='⏱️ '+sec+' Sec - Dekhte Raho...';
+    btn.innerText='⏳ Video dekh rahe ho... '+sec+'s';
     if(sec<=0){
-      clearInterval(timerInt);
-      watched=true;
-      btn.disabled=false;
-      btn.className='btn btn-claim active';
-      btn.innerText='✅ CLAIM 10 Rs - Ab Dabao!';
-      document.getElementById('timer').innerText='✅ Ho gaya! Ab Claim dabao - 10 Rs milega!';
+      clearInterval(timer);
+      canClaim=true;
+      btn.disabled=false; btn.className='claim active'; btn.innerText='✅ CLAIM 10 Rs - Dabao!';
+      document.getElementById('timer').innerText='✅ 30 Sec Ho Gaya! Claim Karo!';
     }
   },1000);
-  updateBal();
 }
-function updateBal(){
-  document.getElementById('bal').innerText=balance+' Rs';
-  localStorage.setItem('myBal',balance);
+
+function showYT(){
+  mode='YT';
+  document.getElementById('vbox').innerHTML=`<iframe src="https://www.youtube.com/embed/${ytVideos[ytIndex]}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+  startTimer();
+}
+function showFB(){
+  mode='FB';
+  let url=encodeURIComponent(fbVideos[fbIndex]);
+  document.getElementById('vbox').innerHTML=`<iframe src="https://www.facebook.com/plugins/video.php?href=${url}&show_text=0&autoplay=1&mute=0" scrolling="no" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>`;
+  startTimer();
+}
+function showTK(){
+  mode='TK';
+  let id=tkVideos[tkIndex];
+  document.getElementById('vbox').innerHTML=`<iframe src="https://www.tiktok.com/embed/v2/${id}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+  startTimer();
+}
+function nextVideo(){
+  if(mode=='YT'){ ytIndex=(ytIndex+1)%ytVideos.length; showYT(); }
+  if(mode=='FB'){ fbIndex=(fbIndex+1)%fbVideos.length; showFB(); }
+  if(mode=='TK'){ tkIndex=(tkIndex+1)%tkVideos.length; showTK(); }
 }
 document.getElementById('claimBtn').onclick=function(){
-  if(watched){
-    balance+=10;
-    updateBal();
-    alert('Mubarak! 10 Rs mil gaye! Total: '+balance+' Rs');
-    this.disabled=true;
-    this.className='btn btn-claim';
-    this.innerText='✅ Mil Gaya! Agli Video Dekho';
-    if(balance>=100){
-      setTimeout(()=>{ if(confirm('100 Rs ho gaye! Withdraw karna hai?')) withdraw(); },500);
-    }
+  if(canClaim){
+    balance+=10; updateBal();
+    alert('Mubarak! 10 Rs mil gaye! Total '+balance+' Rs - Video dekhte raho!');
+    this.disabled=true; this.className='claim'; this.innerText='✅ Mil Gaya! Agli Video Dekho';
+    canClaim=false;
+    setTimeout(nextVideo,1000);
   }
 };
-function nextVideo(){
-  current=(current+1)%videos.length;
-  loadVideo();
-}
 function withdraw(){
-  if(balance<100){
-    alert('Minimum 100 Rs chahiye Withdraw ke liye! Abhi: '+balance+' Rs\nAur '+(100-balance)+' Rs kamao!');
-    return;
-  }
-  let msg = "Assalam! Mujhe Withdraw chahiye%0A%0ABalance: "+balance+" Rs%0ANumber: 03149371732%0AApp: Watch & Earn Pakistan%0A%0AJazzCash/Easypaisa pe bhej dein";
-  window.open("https://wa.me/923149371732?text="+msg,"_blank");
+  if(balance<100){ alert('100 Rs chahiye! Abhi '+balance+' Rs hai'); return; }
+  window.open("https://wa.me/923149371732?text="+encodeURIComponent("Withdraw chahiye Balance: "+balance+" Rs"),"_blank");
 }
-loadVideo();
+updateBal();
+showYT();
 </script>
 </body>
 </html>
