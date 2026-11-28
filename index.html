@@ -3,41 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Watch & Earn - 300</title>
+<title>Watch & Earn 300</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9492225578071595" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#fff;padding:8px;text-align:center}
-.top{background:linear-gradient(45deg,#FF0000,#FF6B00);color:#fff;padding:12px;border-radius:10px}
+.top{background:#FF0000;color:#fff;padding:12px;border-radius:10px}
 .bal{background:#FFF9C4;border:2px solid gold;padding:12px;border-radius:10px;margin:8px 0}
 .bal b{font-size:32px;color:green}
-.vbox{width:100%;height:260px;background:#000;border-radius:10px;overflow:hidden;position:relative}
-.vbox video,.vbox iframe{width:100%;height:100%;border:0}
-.tab{flex:1;padding:12px;border:none;border-radius:8px;font-weight:bold;color:white}
+.vbox{width:100%;height:260px;background:#000;border-radius:10px;overflow:hidden}
+.vbox video{width:100%;height:100%}
 .claim{width:100%;padding:18px;font-size:20px;font-weight:bold;border:none;border-radius:10px;background:gray;color:white;margin-top:10px}
 .claim.active{background:#00C853}
 .ad{border:1px dashed #aaa;padding:5px;border-radius:8px;margin:6px 0;min-height:90px}
-.playBtn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,0,0,0.9);color:white;border:none;padding:15px 30px;font-size:20px;border-radius:30px;z-index:10}
 </style>
 </head>
 <body>
-<div class="top"><h2>🔥 WATCH & EARN - 300 🔥</h2><p>300 Rs Banao - Withdraw Karo</p></div>
-<div class="bal">Balance: <b id="bal">0 Rs</b><br>1 Video = 3 Rs | 100 Video = 300 Rs Withdraw</div>
+<div class="top"><h2>🔥 WATCH & EARN - 300 🔥</h2><p>Video Dekho 3 Rs Pao</p></div>
+<div class="bal">Balance: <b id="bal">0 Rs</b><br>1 Video = 3 Rs | 100 Video = 300 Rs</div>
 
 <div class="ad">
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9492225578071595" data-ad-slot="5507697608" data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-<div style="display:flex;gap:5px;margin:8px 0">
-<button class="tab" style="background:red" onclick="showDirect()">▶️ DIRECT VIDEO 100%</button>
-<button class="tab" style="background:#1877F2" onclick="showYT()">YouTube</button>
-<button class="tab" style="background:#000" onclick="showTK()">TikTok</button>
+<div class="vbox">
+<video id="myVid" controls autoplay muted loop playsinline preload="auto" poster="https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg">
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+</video>
 </div>
-
-<div class="vbox" id="vbox"></div>
-<div style="margin:8px"><button onclick="nextVideo()" style="padding:10px 25px;background:#333;color:white;border:none;border-radius:20px">⏭️ Agli Long Video - Dabao to Chalegi</button></div>
-<p style="font-size:13px">Video pe dabao - Play karo - Awaz on karo</p>
+<p style="margin:5px"><b>Video pe DABAO - Play karo</b> - Agar na chale to Agli dabao</p>
+<div style="margin:8px;display:flex;gap:5px;justify-content:center">
+<button onclick="playVid(0)" style="padding:10px 15px;background:red;color:white;border:none;border-radius:20px">▶️ Video 1</button>
+<button onclick="playVid(1)" style="padding:10px 15px;background:blue;color:white;border:none;border-radius:20px">▶️ Video 2</button>
+<button onclick="playYT()" style="padding:10px 15px;background:black;color:white;border:none;border-radius:20px">▶️ YouTube Kholo</button>
+</div>
 
 <div class="ad">
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9492225578071595" data-ad-slot="5507697608" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -55,65 +56,46 @@ body{background:#fff;padding:8px;text-align:center}
 <button onclick="withdraw()" style="width:100%;padding:16px;background:#25D366;color:white;border:none;border-radius:10px;font-size:18px;font-weight:bold;margin-top:8px">💸 WITHDRAW 300 Rs - 03149371732</button>
 
 <script>
-let directVideos=[
-"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+let vids=[
+"https://www.w3schools.com/html/mov_bbb.mp4",
+"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+"https://www.w3schools.com/html/movie.mp4"
 ];
-let ytVideos=["aqz-KE-bpKQ","LXb3EKWsInQ","hTWKbfoikeg","jfKfPfyJRdk"];
-let tkVideos=["7196081962216604934","7210403039262391557"];
-let dI=0,ytI=0,tkI=0,mode='DIRECT';
 let balance=parseInt(localStorage.getItem('myBal')||'0');
 let canClaim=false,sec=30,myTimer;
-
 function updateBal(){document.getElementById('bal').innerText=balance+' Rs';localStorage.setItem('myBal',balance);}
-
+function playVid(i){
+  let v=document.getElementById('myVid');
+  v.src=vids[i];
+  v.muted=false;
+  v.play();
+  startTimer();
+}
+function playYT(){
+  window.open("https://www.youtube.com/watch?v=aqz-KE-bpKQ","_blank");
+}
 function startTimer(){
   canClaim=false;sec=30;
   let btn=document.getElementById('claimBtn');
   btn.disabled=true;btn.className='claim';btn.innerText='⏳ Dekh Rahe Ho... 30s';
-  document.getElementById('timer').innerText='⏱️ 30 Sec Dekho - 3 Rs Milega';
   clearInterval(myTimer);
   myTimer=setInterval(()=>{
-    sec--;
-    document.getElementById('timer').innerText='⏱️ '+sec+' Sec - Dekhte Raho...';
-    btn.innerText='⏳ Dekh Rahe Ho... '+sec+'s';
-    if(sec<=0){
-      clearInterval(myTimer);canClaim=true;btn.disabled=false;btn.className='claim active';btn.innerText='✅ CLAIM 3 Rs - AB DABAO!';document.getElementById('timer').innerText='✅ Ho Gaya! 3 Rs Claim Karo!';
-    }
+    sec--;document.getElementById('timer').innerText='⏱️ '+sec+' Sec - Dekhte Raho...';btn.innerText='⏳ '+sec+'s...';
+    if(sec<=0){clearInterval(myTimer);canClaim=true;btn.disabled=false;btn.className='claim active';btn.innerText='✅ CLAIM 3 Rs - AB DABAO!';document.getElementById('timer').innerText='✅ Ho Gaya! 3 Rs Claim Karo!';}
   },1000);
 }
-
-function showDirect(){
-  mode='DIRECT';
-  document.getElementById('vbox').innerHTML=`<video id="myVid" src="${directVideos[dI]}" controls autoplay muted playsinline></video><button class="playBtn" onclick="document.getElementById('myVid').muted=false;document.getElementById('myVid').play();this.style.display='none'">▶️ PLAY - Awaz On Karo</button>`;
-  startTimer();
-}
-function showYT(){
-  mode='YT';
-  document.getElementById('vbox').innerHTML=`<iframe src="https://www.youtube.com/embed/${ytVideos[ytI]}?autoplay=1&mute=0&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-  startTimer();
-}
-function showTK(){
-  mode='TK';
-  document.getElementById('vbox').innerHTML=`<iframe src="https://www.tiktok.com/embed/v2/${tkVideos[tkI]}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-  startTimer();
-}
-function nextVideo(){
-  if(mode=='DIRECT'){dI=(dI+1)%directVideos.length;showDirect();}
-  if(mode=='YT'){ytI=(ytI+1)%ytVideos.length;showYT();}
-  if(mode=='TK'){tkI=(tkI+1)%tkVideos.length;showTK();}
-}
 document.getElementById('claimBtn').onclick=function(){
-  if(canClaim){balance+=3;updateBal();alert('Mubarak! 3 Rs mil gaye! Total: '+balance+' Rs');this.disabled=true;this.className='claim';this.innerText='✅ Mil Gaya! Agli Video';canClaim=false;}
+  if(canClaim){balance+=3;updateBal();alert('Mubarak! 3 Rs mil gaye! Total: '+balance+' Rs');this.disabled=true;this.className='claim';this.innerText='✅ Mil Gaya!';canClaim=false;}
 };
 function withdraw(){
   if(balance<300){alert('300 Rs chahiye! Abhi '+balance+' Rs hai. Aur '+(300-balance)+' Rs kamao!');return;}
-  window.open("https://wa.me/923149371732?text="+encodeURIComponent("Withdraw 300: Mera balance "+balance+" Rs ho gaya"),"_blank");
+  window.open("https://wa.me/923149371732?text="+encodeURIComponent("Withdraw 300: "+balance+" Rs"),"_blank");
 }
-updateBal();
-showDirect();
+// auto play on tap
+document.getElementById('myVid').addEventListener('click',function(){this.muted=false;this.play();});
+updateBal();startTimer();
+// try autoplay
+setTimeout(()=>{let v=document.getElementById('myVid');v.play().catch(()=>{});},1000);
 </script>
 </body>
 </html>
