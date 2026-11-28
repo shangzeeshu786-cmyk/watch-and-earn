@@ -3,132 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Watch & Earn - Long Video</title>
+<title>Watch & Earn - 300</title>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9492225578071595" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#fff;padding:8px;text-align:center}
-.top{background:#FF0000;color:#fff;padding:12px;border-radius:10px}
+.top{background:linear-gradient(45deg,#FF0000,#FF6B00);color:#fff;padding:12px;border-radius:10px}
 .bal{background:#FFF9C4;border:2px solid gold;padding:12px;border-radius:10px;margin:8px 0}
-.bal b{font-size:30px;color:green}
-.tabs{display:flex;gap:5px;margin:10px 0}
-.tab{flex:1;padding:12px;border:none;border-radius:8px;font-weight:bold;color:white;font-size:15px;cursor:pointer}
-.vbox{width:100%;height:280px;background:#000;border-radius:10px;overflow:hidden}
+.bal b{font-size:32px;color:green}
+.vbox{width:100%;height:250px;background:#000;border-radius:10px;overflow:hidden}
 .vbox iframe{width:100%;height:100%;border:0}
-.claim{width:100%;padding:16px;font-size:18px;font-weight:bold;border:none;border-radius:10px;background:gray;color:white;margin-top:10px}
+.tab{flex:1;padding:12px;border:none;border-radius:8px;font-weight:bold;color:white}
+.claim{width:100%;padding:18px;font-size:20px;font-weight:bold;border:none;border-radius:10px;background:gray;color:white;margin-top:10px}
 .claim.active{background:#00C853}
+.ad{border:1px dashed #aaa;padding:5px;border-radius:8px;margin:6px 0;min-height:90px}
 </style>
 </head>
 <body>
-<div class="top"><h2>🔥 WATCH & EARN - LONG VIDEO 🔥</h2><p>YouTube - Facebook - TikTok - Sab Chalega</p></div>
-<div class="bal">Balance: <b id="bal">0 Rs</b><br>30 Sec Dekho = 10 Rs | Long Video = Zyada Paisa</div>
+<div class="top"><h2>🔥 WATCH & EARN - 300 🔥</h2><p>300 Rs Banao - Withdraw Karo</p></div>
+<div class="bal">Balance: <b id="bal">0 Rs</b><br>1 Video = 3 Rs | 100 Video = 300 Rs Withdraw</div>
 
-<div style="border:1px dashed #aaa;padding:8px;border-radius:8px">
+<div class="ad">
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9492225578071595" data-ad-slot="5507697608" data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-<p style="font-size:12px">📢 Sponsored Ad - Half Half Yahi Se Hoga</p>
+<p style="font-size:11px">Sponsored Ad</p>
 </div>
 
-<div class="tabs">
+<div style="display:flex;gap:5px;margin:8px 0">
 <button class="tab" style="background:red" onclick="showYT()">▶️ YouTube</button>
-<button class="tab" style="background:#1877F2" onclick="showFB()">📘 Facebook</button>
-<button class="tab" style="background:#000" onclick="showTK()">🎵 TikTok</button>
+<button class="tab" style="background:#1877F2" onclick="showFB()">Facebook</button>
+<button class="tab" style="background:#000" onclick="showTK()">TikTok</button>
 </div>
 
 <div class="vbox" id="vbox"></div>
+<div style="margin:8px"><button onclick="nextVideo()" style="padding:10px 25px;background:#333;color:white;border:none;border-radius:20px">⏭️ Agli Long Video</button></div>
 
-<div style="margin:8px 0">
-<button onclick="nextVideo()" style="padding:10px 20px;background:#333;color:white;border:none;border-radius:20px">⏭️ Agli Long Video</button>
+<div class="ad">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9492225578071595" data-ad-slot="5507697608" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-<div id="timer" style="font-size:18px;font-weight:bold">⏱️ 30 Sec Dekho - Paisa Milega</div>
-<button class="claim" id="claimBtn" disabled>⏳ Video dekh rahe ho... 30s</button>
-<p style="font-size:13px;color:gray;margin:5px">Video dekhte raho - band mat karo - 30 sec ke baad Claim ayega</p>
+<div id="timer" style="font-size:19px;font-weight:bold">⏱️ 30 Sec Dekho - 3 Rs Milega</div>
+<button class="claim" id="claimBtn">⏳ Loading...</button>
 
-<button onclick="withdraw()" style="width:100%;padding:15px;background:#25D366;color:white;border:none;border-radius:10px;font-size:18px;font-weight:bold;margin-top:8px">💸 WITHDRAW - 03149371732</button>
+<div class="ad">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9492225578071595" data-ad-slot="5507697608" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+<p style="font-size:11px">Sponsored - Ad pe click karo</p>
+</div>
+
+<button onclick="withdraw()" style="width:100%;padding:16px;background:#25D366;color:white;border:none;border-radius:10px;font-size:18px;font-weight:bold;margin-top:8px">💸 WITHDRAW 300 Rs - 03149371732</button>
+<p style="font-size:12px;color:gray;margin:5px">Minimum 300 Rs - 300 Tumhara 300 Logo Ka</p>
 
 <script>
-// LONG YOUTUBE VIDEOS - 10-15 min wali
-let ytVideos = [
-"aqz-KE-bpKQ", // Big Buck Bunny - 10 min
-"LXb3EKWsInQ", // Relaxing Nature - Long
-"5qap5aO4i9A", // Lofi - Live Long
-"e-ORhEE9VVg", // Taylor Swift - Long
-"hTWKbfoikeg"  // Nirvana - Long
-];
-// FACEBOOK VIDEOS - Public videos
-let fbVideos = [
-"https://www.facebook.com/facebook/videos/10153231379946729/",
-"https://www.facebook.com/facebook/videos/10154397875806729/"
-];
-// TIKTOK VIDEOS
-let tkVideos = [
-"7196081962216604934",
-"7210403039262391557",
-"7188091559004678917"
-];
-let ytIndex=0, fbIndex=0, tkIndex=0;
-let mode='YT';
-let balance=parseInt(localStorage.getItem('myBal')||'0');
-let sec=30, timer, canClaim=false;
-
-function updateBal(){ document.getElementById('bal').innerText=balance+' Rs'; localStorage.setItem('myBal',balance); }
-
-function startTimer(){
-  canClaim=false; sec=30;
-  let btn=document.getElementById('claimBtn');
-  btn.disabled=true; btn.className='claim'; btn.innerText='⏳ Video dekh rahe ho... 30s';
-  clearInterval(timer);
-  timer=setInterval(()=>{
-    sec--;
-    document.getElementById('timer').innerText='⏱️ '+sec+' Sec - Dekhte Raho...';
-    btn.innerText='⏳ Video dekh rahe ho... '+sec+'s';
-    if(sec<=0){
-      clearInterval(timer);
-      canClaim=true;
-      btn.disabled=false; btn.className='claim active'; btn.innerText='✅ CLAIM 10 Rs - Dabao!';
-      document.getElementById('timer').innerText='✅ 30 Sec Ho Gaya! Claim Karo!';
-    }
-  },1000);
-}
-
-function showYT(){
-  mode='YT';
-  document.getElementById('vbox').innerHTML=`<iframe src="https://www.youtube.com/embed/${ytVideos[ytIndex]}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-  startTimer();
-}
-function showFB(){
-  mode='FB';
-  let url=encodeURIComponent(fbVideos[fbIndex]);
-  document.getElementById('vbox').innerHTML=`<iframe src="https://www.facebook.com/plugins/video.php?href=${url}&show_text=0&autoplay=1&mute=0" scrolling="no" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>`;
-  startTimer();
-}
-function showTK(){
-  mode='TK';
-  let id=tkVideos[tkIndex];
-  document.getElementById('vbox').innerHTML=`<iframe src="https://www.tiktok.com/embed/v2/${id}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-  startTimer();
-}
-function nextVideo(){
-  if(mode=='YT'){ ytIndex=(ytIndex+1)%ytVideos.length; showYT(); }
-  if(mode=='FB'){ fbIndex=(fbIndex+1)%fbVideos.length; showFB(); }
-  if(mode=='TK'){ tkIndex=(tkIndex+1)%tkVideos.length; showTK(); }
-}
-document.getElementById('claimBtn').onclick=function(){
-  if(canClaim){
-    balance+=10; updateBal();
-    alert('Mubarak! 10 Rs mil gaye! Total '+balance+' Rs - Video dekhte raho!');
-    this.disabled=true; this.className='claim'; this.innerText='✅ Mil Gaya! Agli Video Dekho';
-    canClaim=false;
-    setTimeout(nextVideo,1000);
-  }
-};
-function withdraw(){
-  if(balance<100){ alert('100 Rs chahiye! Abhi '+balance+' Rs hai'); return; }
-  window.open("https://wa.me/923149371732?text="+encodeURIComponent("Withdraw chahiye Balance: "+balance+" Rs"),"_blank");
-}
-updateBal();
-showYT();
-</script>
-</body>
-</html>
+let ytVideos=["aqz-KE-bpKQ","LXb3EKWsInQ","5qap5aO4i9A","hTWKbfoikeg"];
+let fbVideos=["10153231379946729","10154397875806729"];
+let tkVideos=["7196081962216604934","7210403039262391557"];
+let ytI=0,fbI=0,tkI=0,mode='YT';
+let balance
